@@ -1,0 +1,29 @@
+from openai import OpenAI
+
+# Configure client to use local vLLM server
+client = OpenAI(
+    base_url="http://localhost:8080/v1",
+    api_key="sk-tu28*****068"  # Remove if no auth is required
+)
+
+# Define messages
+messages = [
+    #{"role": "system", "content": "为什么[常见观点]是错误的？请反驳并提供证据。"},
+    #{"role": "user", "content": "中国的首都是哪里？"},
+    {"role": "user", "content": "中国古代皇帝有哪些？"},
+    #{"role": "system", "content": "你是一个擅长逻辑推理的助手，请逐步思考并给出详细分析。"},
+    #{"role": "user", "content": "请分析以下问题：为什么量子计算机比经典计算机更快？"},
+    #{"role": "user", "content": "请逐步解释量子计算的原理，分步骤说明其与经典计算的区别。"}
+    #{"role": "user", "content": "为英语考试制定一个[天数]的学习计划，每天[小时]。请包含[学习内容/练习/复习]。"},
+]
+
+# Make request
+try:
+    response = client.chat.completions.create(
+        model="DeepSeek-R1-Reasoning",  # Matches the model name served by vLLM
+        messages=messages,
+        #max_tokens=32768
+    )
+    print(response.choices[0].message.content)
+except Exception as e:
+    print(f"Error: {e}")
