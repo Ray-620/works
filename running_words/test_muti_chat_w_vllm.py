@@ -1,6 +1,6 @@
 from vllm import LLM, SamplingParams
 
-model = LLM(model="/root/Qwen3-30B-A3B", tensor_parallel_size=4)
+model = LLM(model="/path-to-model/Qwen3-30B-A3B", tensor_parallel_size=4)
 sampling_params = SamplingParams(temperature=0.7, max_tokens=2000)
 
 def build_prompt(history):
