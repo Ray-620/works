@@ -2,7 +2,7 @@ from openai import OpenAI
 
 # Configure client to use local vLLM server
 client = OpenAI(
-    base_url="http://172.29.20.120:8090/v1",
+    base_url="http://localhost:8090/v1",
     api_key="sk-tu2931887691" # Remove if no auth is required
 )
 
